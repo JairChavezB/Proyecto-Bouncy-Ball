@@ -3,12 +3,25 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class ball extends Actor
 {
     
+    private int offsetY = 1;
+    private int offsetX = 1;
+    
     public void act()
     {
-        move(8);
+        int x = getX();
+        int y = getY();
         
-        if(isAtEdge()){
-            turn(20);
+        x += offsetX;
+        y += offsetY;
+        
+        if(y >= getWorld().getHeight() || y <=0){
+            offsetY *= -1;
         }
+        
+        if(x >= getWorld().getWidth() || x <=0){
+            offsetX *= -1;
+        }
+        
+        setLocation(x,y);
     }
 }
